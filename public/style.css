@@ -1,0 +1,148 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: lightgray;
+    margin: 0;
+    padding: 0;
+    /* height: 100vh; */
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    flex-direction: column;
+  }
+  .title{
+    font-size: 50pt;
+    margin-top: 30px;
+    margin-bottom: 10%;
+    
+  }
+  .main-container{
+    display: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .start-container {
+    display: flex;
+  }
+  
+  .container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .card {
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    perspective: 1000px; /* Add perspective for 3D effect */
+    transition: transform 0.5s ease;
+  }
+  
+  .card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  .card.active {
+    background-color: lightblue;
+  }
+  
+  .card-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+  }
+  
+  .card.active .card-inner {
+    transform: rotateY(180deg); /* Flip to show the symbol */
+  }
+  
+  .card-front,
+  .card-back {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    backface-visibility: hidden;
+    font-size: 30pt;
+  }
+  
+  .card-front {
+    transform: rotateY(0deg); /* Initially visible */
+  }
+  
+  .card-back {
+    transform: rotateY(-180deg); /* Initially hidden */
+  }
+  
+  .card span {
+    font-size: 30px; /* Symbol font size */
+  }
+  
+  #timer {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  #result {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+  }
+  
+  /* Congratulations pop-up */
+  .congrats {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #4caf50;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 32px;
+    animation: fadeInScale 0.5s ease-out forwards;
+  }
+  
+  @keyframes fadeInScale {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.5);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+  
